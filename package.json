@@ -1,0 +1,21 @@
+{
+  "name": "nba-automation-lab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "NBA-themed Playwright automation learning lab for QA Automation practice.",
+  "scripts": {
+    "start": "C:\\Progra~1\\nodejs\\node.exe server.mjs",
+    "test": "C:\\Progra~1\\nodejs\\node.exe ./node_modules/@playwright/test/cli.js test"
+  },
+  "keywords": [
+    "playwright",
+    "qa-automation",
+    "nba",
+    "testing"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.59.1"
+  }
+}

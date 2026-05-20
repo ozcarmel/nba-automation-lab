@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NBA Automation Lab</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Playwright learning workspace</p>
+        <h1>NBA Automation Lab</h1>
+      </div>
+      <nav aria-label="Primary navigation">
+        <button class="nav-tab active" type="button" data-view="basics">Basics</button>
+        <button class="nav-tab" type="button" data-view="teams">Teams</button>
+        <button class="nav-tab" type="button" data-view="players">Players</button>
+        <button class="nav-tab" type="button" data-view="api">API</button>
+        <button class="nav-tab" type="button" data-view="challenges">Challenges</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero compact-hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">QA Automation through basketball data</p>
+          <h2 id="hero-title">Learn, Practice, Understand - Playwright hands on.</h2>
+          <p>
+            NBA scenarios explain each manual action, page reaction, Playwright step, and test
+            result.
+          </p>
+        </div>
+      </section>
+
+      <section id="basics" class="workspace-section learning-section app-view active" aria-labelledby="basics-title">
+        <div class="section-heading">
+          <p class="eyebrow">Start here</p>
+          <h2 id="basics-title">What is Playwright?</h2>
+        </div>
+        <div class="intro-grid">
+          <article class="explain-card">
+            <h3>In plain QA words</h3>
+            <p>
+              Playwright is a tool that opens a browser, performs user actions, and checks the
+              expected result. Think of it as a repeatable manual test that can run by itself.
+            </p>
+          </article>
+          <article class="explain-card">
+            <h3>The basic pattern</h3>
+            <ol>
+              <li>Open the page.</li>
+              <li>Find the right element.</li>
+              <li>Do an action.</li>
+              <li>Check the reaction.</li>
+            </ol>
+          </article>
+          <article class="explain-card">
+            <h3>NBA example</h3>
+            <p>
+              Manual QA: choose West in the conference filter. Playwright: select West in the same
+              dropdown. Expected result: only Western Conference teams remain visible.
+            </p>
+          </article>
+        </div>
+
+        <div class="process-board" aria-label="Playwright learning process">
+          <div>
+            <span>1</span>
+            <strong>Manual action</strong>
+            <p>You click, type, select, or search like a real user.</p>
+          </div>
+          <div>
+            <span>2</span>
+            <strong>Page reaction</strong>
+            <p>The website changes: data filters, sorts, appears, or disappears.</p>
+          </div>
+          <div>
+            <span>3</span>
+            <strong>Playwright check</strong>
+            <p>The test confirms the expected result and reports pass or fail.</p>
+          </div>
+        </div>
+
+        <div class="learning-log" data-testid="learning-log">
+          <div>
+            <p class="eyebrow">Live learning notes</p>
+            <h3>Try something on the page</h3>
+          </div>
+          <p id="learning-message">
+            No pressure here. Click a challenge button below or use the filters manually, and this
+            panel will explain what changed and what Playwright would check.
+          </p>
+        </div>
+      </section>
+
+      <section id="teams" class="workspace-section app-view" aria-labelledby="teams-title" hidden>
+        <div class="section-heading">
+          <p class="eyebrow">UI automation target</p>
+          <h2 id="teams-title">Teams</h2>
+        </div>
+        <div class="qa-map">
+          <strong>Learning goal:</strong>
+          <span>
+            Understand a Playwright UI test: find a dropdown, select a value, and verify the visible
+            teams changed.
+          </span>
+        </div>
+        <div class="team-practice-layout">
+          <div class="practice-controls">
+            <h3>Try it manually</h3>
+            <p>Change the conference or search for a team. The result list updates immediately.</p>
+            <div class="toolbar">
+              <label>
+                Conference
+                <select id="conference-filter" data-testid="conference-filter">
+                  <option value="all">All</option>
+                  <option value="East">East</option>
+                  <option value="West">West</option>
+                </select>
+              </label>
+              <label>
+                Search
+                <input id="team-search" data-testid="team-search" type="search" placeholder="Team name" />
+              </label>
+            </div>
+          </div>
+          <div class="practice-results">
+            <h3>Visible result</h3>
+            <div id="team-list" class="team-grid" data-testid="team-list"></div>
+          </div>
+        </div>
+
+        <div class="automation-replay" data-testid="automation-replay" aria-labelledby="replay-title">
+          <div class="replay-intro">
+            <p class="eyebrow">Visible Playwright automation</p>
+            <h3 id="replay-title">Watch Playwright test the conference dropdown</h3>
+            <p>
+              This replay shows the automation version of the manual test. It does not change
+              anything dangerous. It only selects West, counts the team cards, and reports whether
+              the expected result is correct.
+            </p>
+            <div class="replay-actions">
+              <button
+                id="run-conference-replay"
+                class="tool-button"
+                type="button"
+                data-testid="run-conference-replay"
+              >
+                Run PASS test
+              </button>
+              <button
+                id="run-conference-fail-replay"
+                class="tool-button"
+                type="button"
+                data-testid="run-conference-fail-replay"
+              >
+                Run FAIL test
+              </button>
+              <button id="reset-conference-replay" class="tool-button" type="button">
+                Reset
+              </button>
+            </div>
+          </div>
+
+          <div class="replay-details">
+            <div class="step-column">
+              <h4>Manual QA steps</h4>
+              <ol>
+                <li>Open the Teams section.</li>
+                <li>Choose West in the Conference dropdown.</li>
+                <li>Check that only Western Conference teams are visible.</li>
+              </ol>
+            </div>
+            <div class="step-column">
+              <h4>Playwright steps</h4>
+              <ol id="automation-steps" data-testid="automation-steps">
+                <li data-step="open">Open the page.</li>
+                <li data-step="find">Find the dropdown by test id.</li>
+                <li data-step="select">Select the conference value.</li>
+                <li data-step="count">Count visible team cards.</li>
+                <li data-step="assert">Assert that the result is correct.</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="code-and-result">
+            <pre class="code-sample" aria-label="Playwright code sample"><code id="replay-code"></code></pre>
+            <div id="code-tooltip" class="code-tooltip" role="tooltip" hidden></div>
+            <div class="result-panel" data-testid="replay-result">
+              <span id="replay-status" class="result-badge idle">Not run yet</span>
+              <p id="replay-summary">
+                Expected result for the PASS test: 3 visible Western Conference teams. Run the PASS
+                test first, then run the FAIL test to see how Playwright reports a mismatch.
+              </p>
+              <p id="failure-reason" class="failure-reason" data-testid="failure-reason"></p>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <section id="players" class="workspace-section app-view" aria-labelledby="players-title" hidden>
+        <div class="section-heading">
+          <p class="eyebrow">Assertions and comparison</p>
+          <h2 id="players-title">Players</h2>
+        </div>
+        <div class="qa-map">
+          <strong>Learning goal:</strong>
+          <span>
+            Understand a Playwright click test: click a sort button and check which player appears
+            first in the table.
+          </span>
+        </div>
+        <div class="toolbar">
+          <label>
+            Position
+            <select id="position-filter" data-testid="position-filter">
+              <option value="all">All</option>
+              <option value="Guard">Guard</option>
+              <option value="Forward">Forward</option>
+              <option value="Center">Center</option>
+            </select>
+          </label>
+          <button id="sort-points" class="tool-button" type="button" data-testid="sort-points">
+            Sort by points
+          </button>
+        </div>
+        <div id="player-table" class="table-wrap" data-testid="player-table"></div>
+      </section>
+
+      <section id="api" class="workspace-section api-section app-view" aria-labelledby="api-title" hidden>
+        <div class="section-heading">
+          <p class="eyebrow">API automation target</p>
+          <h2 id="api-title">API Playground</h2>
+        </div>
+        <div class="qa-map dark">
+          <strong>Learning goal:</strong>
+          <span>
+            Understand response validation: choose an endpoint and check that the displayed response
+            contains the expected endpoint and NBA data.
+          </span>
+        </div>
+        <div class="api-layout">
+          <div class="endpoint-list" role="list" aria-label="API endpoints">
+            <button class="endpoint active" type="button" data-endpoint="teams">GET /api/teams</button>
+            <button class="endpoint" type="button" data-endpoint="players">GET /api/players</button>
+            <button class="endpoint" type="button" data-endpoint="standings">GET /api/standings</button>
+          </div>
+          <pre id="api-output" data-testid="api-output"></pre>
+        </div>
+      </section>
+
+      <section id="challenges" class="workspace-section app-view" aria-labelledby="challenges-title" hidden>
+        <div class="section-heading">
+          <p class="eyebrow">First automation roadmap</p>
+          <h2 id="challenges-title">Playwright Challenges</h2>
+        </div>
+        <div class="challenge-list">
+          <article>
+            <h3>Challenge 1: Team filter</h3>
+            <p>Filter Western Conference teams and assert that only West teams are visible.</p>
+            <button class="tool-button demo-button" type="button" data-demo="west-filter">
+              Try this safely
+            </button>
+            <code>selectOption("West") + expect(3 teams)</code>
+          </article>
+          <article>
+            <h3>Challenge 2: Player sorting</h3>
+            <p>Sort players by points and verify the top scorer appears first.</p>
+            <button class="tool-button demo-button" type="button" data-demo="points-sort">
+              Try this safely
+            </button>
+            <code>click("Sort by points") + expect(top player)</code>
+          </article>
+          <article>
+            <h3>Challenge 3: API response</h3>
+            <p>Open the players endpoint and validate the response contains player stats.</p>
+            <button class="tool-button demo-button" type="button" data-demo="players-api">
+              Try this safely
+            </button>
+            <code>click("GET /api/players") + expect(JSON text)</code>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

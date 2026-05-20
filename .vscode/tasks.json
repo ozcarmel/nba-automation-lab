@@ -1,0 +1,20 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start NBA Automation Lab",
+      "type": "shell",
+      "command": "C:\\Progra~1\\nodejs\\node.exe",
+      "args": ["server.mjs"],
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Run Playwright Tests",
+      "type": "shell",
+      "command": "C:\\Progra~1\\nodejs\\npm.cmd",
+      "args": ["test"],
+      "problemMatcher": []
+    }
+  ]
+}
