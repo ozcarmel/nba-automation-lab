@@ -6,6 +6,14 @@ This project is a hands-on learning website for starting and improving my journe
 
 The main goal is to learn Playwright by building and testing a real website, step by step. The website should also help me improve my professional skillset for QA Automation jobs and QA roles that include AI-related terminology, tools, and workflows.
 
+Important direction update:
+
+The main project should be guided by a personal QA Automation Coach agent. The website is a practice lab that supports the agent, not the main teacher by itself.
+
+Agent instruction file:
+
+- qa-automation-coach.agent.md
+
 This project should teach both:
 
 - How to use Playwright in practical automation scenarios
